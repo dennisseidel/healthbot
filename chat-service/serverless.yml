@@ -3,9 +3,9 @@ service: chat-service
 provider:
   name: google
   runtime: nodejs
-  project: my-project
+  project: trusty-acre-156607
   # the path to the credentials file needs to be absolute
-  credentials: ~/.gcloud/keyfile.json
+  credentials: ~/Desktop/secret/healthbot/key.json
 
 plugins:
   - serverless-google-cloudfunctions
@@ -20,7 +20,7 @@ package:
 
 functions:
   first:
-    handler: http
+    handler: facebookhook
     events:
       - http: path
 

@@ -9,6 +9,7 @@
   "author": "serverless.com",
   "license": "MIT",
   "dependencies": {
+    "dialogflow": "^0.4.0",
     "serverless-google-cloudfunctions": "^1.1.0"
   }
 }
