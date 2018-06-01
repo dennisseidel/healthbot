@@ -1,0 +1,36 @@
+@startuml
+
+participant Facebook as F
+participant EventRouter as R
+participant Dialogflow as D
+participant Fulliflment (Firebase) as FB
+participant Lambda as L
+F -> R: HTTP Request with Event
+R -> R: Validate the event, \n extract identity, load profile, \n load session
+R -> R: Create Request to dialogflow with context \n (profile, session data)
+R -> D: Send Request to Dialogflow
+D -> D: Send identify intent
+D -> F: If intent needs a fullfilment call the fullfilment function
+F -> L: Route to the correct lambda
+
+alt successful case
+
+	Bob -> Alice: Authentication Accepted
+	
+else some kind of failure
+
+	Bob -> Alice: Authentication Failure
+	group My own label
+		Alice -> Log : Log attack start
+	    loop 1000 times
+	        Alice -> Bob: DNS Attack
+	    end
+		Alice -> Log : Log attack end
+	end
+	
+else Another type of failure
+
+   Bob -> Alice: Please repeat
+   
+end
+@enduml

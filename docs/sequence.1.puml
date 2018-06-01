@@ -1,0 +1,32 @@
+@startuml
+start
+: /facebookhook classifyAndTransformToSysSignal(facebook_message) = recievedUserMessage /
+note right
+  give a session id: how to identify session ids? or have just a userid and persist context for where but when to update the context?
+  transformatior / classifier (e.g. like the brain / unclassified signal are not useful)
+  transformator(facebook_message) =
+    EVENT: user_message_recieved (common data format / where to version this?)
+  transforms the signal into one the system understands
+end note
+: findIntent(recieved_user_message) = identifiedUserIntent;
+note right
+  EVENT: identified_user_intent (or specific topic/event for eacht intent?)
+  probably better allready be specific but allow for filtering e.g. use identified_user_intent/xxx/
+  do I need to have domain specific functions? (yes bounded context)
+end note 
+:answer(x) = identify intent & entity;
+note right
+  simple cases when event is emmit user_intent/xxx/ answer right away
+  more complex cases (further system process based on context & )
+  I: Command identify_event / event itself?
+  O: generate EVENT: intent_identified (entity: BMI, weight / intent: calculate, advice )
+end note
+:f(x) = ask for bmi;
+note right
+  I: C/E update_bmi
+  - check existing data in the profile
+  O: ask the user for the data with message
+end note
+:f(x) = ;
+stop
+@enduml
