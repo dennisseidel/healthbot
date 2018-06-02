@@ -1,0 +1,14 @@
+@startuml
+(*) --> "Agent: Hi I am your personal trainer"
+
+if "User: What is my bmi?" then
+  --> "Fullfilment: manage_bmi"
+  if "profile exists" then
+    -> [true] "responed: Your last BMI on 30.12.2018 was 25, please give me your weight and hight to update it"
+  else 
+    --> [false] "responed: Plase give me your height, weight and birthday"
+    if "User: My hight is 177 cm, I weigh 80kg and my birthday is 19.12.1987"
+    --> "Fullfilment: update_bmi"
+endif
+
+@enduml
