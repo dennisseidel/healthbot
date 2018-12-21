@@ -15,3 +15,6 @@ lambdaFunction update_bmi:
 
 start with a simple application -> full firbases function 
 
+dialogflow -> interface / agent
+firebase -> dispatcher 
+lambda -> function (business function, manage state e.g. profile - add somethign / get something / adds context)
